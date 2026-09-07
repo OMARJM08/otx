@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: otx-elixir
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    disk:
+      name: otx-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DATA_DIR
+        value: /data
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: WHATSAPP_NUMBER
+        sync: false

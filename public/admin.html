@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة تحكم OTX ELIXIR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">لوحة تحكم OTX ELIXIR</div>
+    <a href="/" class="admin-btn">← رجوع للمتجر</a>
+  </div>
+</header>
+
+<div id="loginView" class="login-box">
+  <h3>تسجيل دخول الأدمن</h3>
+  <div class="err" id="loginErr"></div>
+  <input type="email" id="loginEmail" placeholder="البريد الإلكتروني">
+  <input type="password" id="loginPassword" placeholder="كلمة المرور">
+  <button id="loginBtn">دخول</button>
+</div>
+
+<div id="dashboardView" class="admin-body" style="display:none;">
+  <div class="admin-section-title">إعدادات الطلب عبر واتساب</div>
+  <div class="form-grid">
+    <div class="field full">
+      <label>رقم الواتساب (مع رمز الدولة، بدون + — مثال: 962791234567)</label>
+      <input id="fWhatsapp">
+    </div>
+  </div>
+  <button class="save-btn" id="saveWhatsappBtn">حفظ الرقم</button>
+  <span id="whatsappSaved" style="display:none; color:var(--copper-bright); font-size:12.5px; margin-inline-start:12px;">تم الحفظ ✓</span>
+
+  <div class="admin-section-title" style="margin-top:44px;" id="formTitle">إضافة منتج جديد</div>
+
+  <div class="pdf-drop" id="pdfDrop">
+    <div>📄 اضغط لاختيار ملف PDF (اختياري) — سيتم إرفاقه بالمنتج ويمكن للعميل تحميله</div>
+    <div class="pdf-drop-name" id="pdfDropName"></div>
+  </div>
+  <input type="file" id="pdfInput" accept="application/pdf" style="display:none;">
+
+  <div class="pdf-drop" id="imgDrop">
+    <div>🖼️ اضغط لاختيار صورة المنتج (اختياري)</div>
+    <div class="pdf-drop-name" id="imgDropName"></div>
+  </div>
+  <input type="file" id="imgInput" accept="image/*" style="display:none;">
+
+  <div class="form-grid">
+    <div class="field"><label>اسم المنتج</label><input id="fName"></div>
+    <div class="field"><label>الفئة / الوصف القصير</label><input id="fCat"></div>
+    <div class="field"><label>السعر (د.أ)</label><input id="fPrice" type="number"></div>
+    <div class="field"><label>السعر قبل الخصم (اختياري)</label><input id="fOldPrice" type="number"></div>
+    <div class="field full"><label>لون الخلفية (Gradient CSS)</label><input id="fSwatch" placeholder="linear-gradient(160deg,#5a1d2c,#2c0d15)"></div>
+    <div class="field full"><label>مقدمة العطر (افصل بفاصلة)</label><input id="fTop"></div>
+    <div class="field full"><label>قلب العطر (افصل بفاصلة)</label><input id="fHeart"></div>
+    <div class="field full"><label>قاعدة العطر (افصل بفاصلة)</label><input id="fBase"></div>
+  </div>
+  <button class="save-btn" id="saveBtn">حفظ المنتج</button>
+  <button class="cancel-btn" id="resetBtn">مسح الحقول</button>
+
+  <div class="admin-section-title" style="margin-top:44px;">المنتجات الحالية</div>
+  <table class="admin-table">
+    <thead><tr><th></th><th>الاسم</th><th>الفئة</th><th>السعر</th><th></th></tr></thead>
+    <tbody id="adminTableBody"></tbody>
+  </table>
+
+  <div class="admin-section-title" style="margin-top:44px;">الطلبات الواردة</div>
+  <table class="admin-table">
+    <thead><tr><th>التاريخ</th><th>المنتج</th><th>السعر</th><th>الحالة</th></tr></thead>
+    <tbody id="ordersTableBody"></tbody>
+  </table>
+</div>
+
+<script src="/admin.js"></script>
+</body>
+</html>

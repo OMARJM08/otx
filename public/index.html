@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTX ELIXIR | متجر العطور الفاخرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">OTX ELIXIR</div>
+    <a href="/admin.html" class="admin-btn">لوحة التحكم</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-eyebrow">Luxury Fragrance House</span>
+  <h1>عطرك ليس رائحة<br><span>بل توقيع</span></h1>
+  <p>OTX ELIXIR بيت عطور يصنع تجربة حسية فاخرة — اضغط على أي عطر لعرض تفاصيله كاملة</p>
+</section>
+
+<section id="collection">
+  <div class="section-head">
+    <div class="eyebrow-sm">Our Collection</div>
+    <h2>مجموعة OTX ELIXIR</h2>
+    <p>اضغط على أي منتج لعرض هرم العطر والسعر بشكل كامل</p>
+  </div>
+  <div class="grid" id="productGrid"><div class="empty-state">جاري تحميل المنتجات...</div></div>
+</section>
+
+<footer>
+  <div class="f-fine">© 2026 OTX ELIXIR — جميع الحقوق محفوظة</div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="m-hero quilt">
+      <span class="m-eyebrow">OTX Elixir Collection</span>
+      <h2 id="mName">—</h2>
+      <div class="m-cat" id="mCat">—</div>
+      <div class="m-bottle"><img id="mImg" alt="" style="display:none;"></div>
+      <a class="pdf-link" id="mPdfLink" href="#" target="_blank" style="display:none;">📄 عرض ملف العطر (PDF)</a>
+    </div>
+    <div class="m-notes quilt">
+      <div class="title">هرم العطر</div>
+      <div class="facet"><div class="facet-head"><span class="facet-name">الافتتاحية</span><span class="facet-tag">Top</span></div><div class="facet-notes" id="mTop"></div></div>
+      <div class="facet"><div class="facet-head"><span class="facet-name">القلب</span><span class="facet-tag">Heart</span></div><div class="facet-notes" id="mHeart"></div></div>
+      <div class="facet"><div class="facet-head"><span class="facet-name">القاعدة</span><span class="facet-tag">Base</span></div><div class="facet-notes" id="mBase"></div></div>
+    </div>
+    <div class="m-cta quilt">
+      <div class="m-price-row">
+        <span class="m-price" id="mPrice">—</span>
+        <span class="m-price-old" id="mPriceOld"></span>
+      </div>
+      <a class="m-btn" id="mOrderBtn" href="#" target="_blank">اطلب عبر واتساب</a>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
