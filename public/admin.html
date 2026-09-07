@@ -36,6 +36,21 @@
   <button class="save-btn" id="saveWhatsappBtn">حفظ الرقم</button>
   <span id="whatsappSaved" style="display:none; color:var(--copper-bright); font-size:12.5px; margin-inline-start:12px;">تم الحفظ ✓</span>
 
+  <div class="admin-section-title" style="margin-top:44px;">إضافة PDF جاهز بسرعة</div>
+  <div class="quick-pdf-box">
+    <div class="pdf-drop" id="quickPdfDrop">
+      <div>📚 اضغط لاختيار ملف PDF كامل</div>
+      <div class="pdf-drop-name" id="quickPdfName"></div>
+    </div>
+    <input type="file" id="quickPdfInput" accept="application/pdf" style="display:none;">
+    <div class="form-grid">
+      <div class="field"><label>اسم المنتج (اختياري)</label><input id="quickPdfTitle" placeholder="يؤخذ من اسم الملف تلقائياً"></div>
+      <div class="field"><label>السعر (د.أ)</label><input id="quickPdfPrice" type="number" min="0" step="0.01"></div>
+    </div>
+    <button class="save-btn" id="quickPdfSaveBtn">رفع وإضافة المنتج</button>
+    <span id="quickPdfStatus" style="display:none; color:var(--copper-bright); font-size:12.5px; margin-inline-start:12px;"></span>
+  </div>
+
   <div class="admin-section-title" style="margin-top:44px;" id="formTitle">إضافة منتج جديد</div>
 
   <div class="pdf-drop" id="pdfDrop">

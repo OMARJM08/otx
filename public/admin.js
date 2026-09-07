@@ -3,6 +3,7 @@ let products = [];
 let editingId = null;
 let pendingPdfFile = null;
 let pendingImgFile = null;
+let quickPdfFile = null;
 
 function api(path, opts = {}){
   const headers = opts.headers || {};
@@ -156,6 +157,51 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
 });
 
 document.getElementById('resetBtn').addEventListener('click', clearForm);
+
+document.getElementById('quickPdfDrop').addEventListener('click', () => document.getElementById('quickPdfInput').click());
+document.getElementById('quickPdfInput').addEventListener('change', (e) => {
+  quickPdfFile = e.target.files[0] || null;
+  document.getElementById('quickPdfName').textContent = quickPdfFile ? '📎 ' + quickPdfFile.name : '';
+  if (quickPdfFile && !document.getElementById('quickPdfTitle').value.trim()) {
+    document.getElementById('quickPdfTitle').value = quickPdfFile.name.replace(/\.pdf$/i, '');
+  }
+});
+
+document.getElementById('quickPdfSaveBtn').addEventListener('click', async () => {
+  const status = document.getElementById('quickPdfStatus');
+  const price = document.getElementById('quickPdfPrice').value;
+  if (!quickPdfFile) {
+    alert('اختر ملف PDF أولاً');
+    return;
+  }
+  if (!price || Number(price) < 0) {
+    alert('أدخل السعر');
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append('name', document.getElementById('quickPdfTitle').value.trim() || quickPdfFile.name.replace(/\.pdf$/i, ''));
+  fd.append('price', price);
+  fd.append('category', 'ملف PDF رقمي');
+  fd.append('pdf', quickPdfFile);
+
+  const res = await api('/api/products', { method: 'POST', body: fd });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    alert(err.error || 'حدث خطأ أثناء رفع الملف');
+    return;
+  }
+
+  quickPdfFile = null;
+  document.getElementById('quickPdfInput').value = '';
+  document.getElementById('quickPdfName').textContent = '';
+  document.getElementById('quickPdfTitle').value = '';
+  document.getElementById('quickPdfPrice').value = '';
+  status.textContent = 'تمت إضافة ملف PDF ✓';
+  status.style.display = 'inline';
+  setTimeout(() => status.style.display = 'none', 2500);
+  loadProducts();
+});
 
 tryAutoLogin();
 
